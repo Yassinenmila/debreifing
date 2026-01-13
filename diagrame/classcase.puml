@@ -1,0 +1,172 @@
+' @startuml debriefing
+
+' abstract class User {
+
+'     - id int 
+'     - name string
+'     - promo string
+'     - telephone int
+'     - email string
+'     - password string
+
+
+' }
+
+' class Etudiant extends User {
+
+'     - roles 
+'     - livration ()
+'     - grades ()
+    
+' }
+
+' class Formateur extends User {
+'     - roles 
+'     - validation()
+'     - debriefing()
+
+
+' }
+' class Admin extends User {
+
+'     - roles 
+
+' } 
+
+' class Classes {
+    
+'     - id 
+'     - name 
+'     - teacher 
+
+'     - add_class()
+'     - modify_class()
+'     - delet_class()
+' }
+' class Sprint {
+'     - add_sprint()
+'     - modify_sprint()
+'     - delet_sprint()
+' }
+' class Competences {
+'     - add_comp
+'     - modify_comp
+'     - delet_comp
+' }
+
+' @enduml
+
+@startuml DiagrammeClassesDebriefing
+
+' ===== Utilisateurs =====
+class User {
+  +id : int
+  +nom : string
+  +email : string
+  +password : string
+  +login()
+  +logout()
+}
+
+class Admin {
+  +configurerSysteme()
+  +gererDonnees()
+}
+
+class Formateur {
+  +evaluerCompetences()
+  +noterBrief()
+  +validerCompetences()
+}
+
+class Etudiant {
+  +livrerProjet()
+  +consulterNotes()
+}
+
+User <|-- Admin
+User <|-- Formateur
+User <|-- Etudiant
+
+
+' ===== Pédagogie =====
+class Classe {
+  +id : int
+  +nom : string
+  +annee : string
+}
+
+class Sprint {
+  +id : int
+  +nom : string
+  +dateDebut : date
+  +dateFin : date
+}
+
+class Competence {
+  +id : int
+  +nom : string
+  +niveau : int
+}
+
+class Brief {
+  +id : int
+  +titre : string
+  +description : text
+}
+
+class Debriefing {
+  +id : int
+  +date : date
+}
+
+
+' ===== Évaluation =====
+class Livraison {
+  +id : int
+  +dateLivraison : date
+  +lienProjet : string
+}
+
+class Note {
+  +id : int
+  +valeur : float
+}
+
+class Resultat {
+  +id : int
+  +statut : string
+}
+
+
+' ===== Communication =====
+class Message {
+  +id : int
+  +contenu : text
+  +dateEnvoi : date
+}
+
+
+' ===== Relations =====
+Classe "1" -- "*" Etudiant
+Classe "1" -- "*" Formateur
+
+Classe "1" -- "*" Sprint
+Sprint "1" -- "*" Brief
+
+Brief "*" -- "*" Competence
+Brief "1" -- "*" Livraison
+
+Livraison "1" -- "1" Etudiant
+Livraison "1" -- "1" Brief
+
+Debriefing "1" -- "1" Livraison
+Debriefing "1" -- "*" Note
+Debriefing "1" -- "*" Resultat
+
+Formateur "1" -- "*" Debriefing
+
+Etudiant "1" -- "*" Message
+Formateur "1" -- "*" Message
+
+@enduml

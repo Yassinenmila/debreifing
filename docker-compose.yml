@@ -1,0 +1,35 @@
+services:
+  app:
+    build: .
+    container_name: php_app
+    ports:
+      - "8000:80"
+    volumes:
+      - ./src:/var/www/html
+    depends_on:
+      - db
+  pgadmin:
+    image: dpage/pgadmin4:snapshot
+    container_name: pgadmin
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "nmilayassine4@gmail.com"
+      PGADMIN_DEFAULT_PASSWORD: "Yass123"
+    ports:
+      - "5050:80"
+    depends_on:
+      - db
+
+  db:
+    image: postgres:17
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_DB: mydb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
