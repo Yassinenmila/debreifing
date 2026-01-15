@@ -1,8 +1,13 @@
 FROM php:8.2-apache
 
 # Dépendances PostgreSQL
-RUN apt-get update && apt-get install -y libpq-dev \
+RUN apt-get update && apt-get install -y \
+    libpq-dev \
+    unzip \
+    git \
+    zip \
     && docker-php-ext-install pdo pdo_pgsql
+
 
 # Apache modules
 RUN a2enmod rewrite

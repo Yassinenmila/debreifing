@@ -1,0 +1,19 @@
+# Activer la réécriture
+RewriteEngine On
+
+# Base (utile dans Docker)
+RewriteBase /
+
+# Bloquer l'accès aux fichiers cachés
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+# Empêcher le listing de dossiers
+Options -Indexes
+
+# Rediriger toutes les requêtes vers index.php
+# sauf si le fichier ou dossier existe
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [L,QSA]
