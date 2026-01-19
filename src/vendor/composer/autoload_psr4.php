@@ -7,5 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'eftec\\bladeone\\' => array($vendorDir . '/eftec/bladeone/lib'),
-    'App\\' => array($baseDir . '/src'),
+    'App\\' => array($baseDir . '/App'),
 );

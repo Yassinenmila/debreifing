@@ -1,35 +1,38 @@
 <?php 
+namespace App\core;
+use PDO;
+use PDOException;
 
 class Data {
 
-    private $db; 
-    private function __construct{}
+    private PDO $db; 
 
-    public static function connect {
+    private static ?Data $inst=null;
 
+    private function __construct(){
         try {
-            $pdo = new PDO(
+            $this->db = new PDO(
                 "pgsql:host=db;port=5432;dbname=mydb",
                 "postgres",
-                "postgres"
+                "postgres",
+                [
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+                ]
             );
 
         }catch (PDOException $e) {
-            echo "❌ Erreur : " . $e->getMessage();
+            echo "Erreur : " . $e->getMessage();
         }
-
-
     }
 
+    public static function getinstance(){
+        if(self::$inst===null){
+            self::$inst = new Data();
+        }
+        return self::$inst;
+    }
+    public function connect() :PDO{
+        return $this->db;
+    }
 }
-
-// try {
-//     $pdo = new PDO(
-//         "pgsql:host=db;port=5432;dbname=mydb",
-//         "postgres",
-//         "postgres"
-//     );
-//     echo "✅ Connexion PostgreSQL OK";
-// } catch (PDOException $e) {
-//     echo "❌ Erreur : " . $e->getMessage();
-// }

@@ -6,5 +6,13 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\controller\\Home' => $baseDir . '/App/controller/Home.php',
+    'App\\core\\Controller' => $baseDir . '/App/core/Controller.php',
+    'App\\core\\Data' => $baseDir . '/App/core/Data.php',
+    'App\\core\\Router' => $baseDir . '/App/core/Router.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'eftec\\bladeone\\BladeOne' => $vendorDir . '/eftec/bladeone/lib/BladeOne.php',
+    'eftec\\bladeone\\BladeOneCache' => $vendorDir . '/eftec/bladeone/lib/BladeOneCache.php',
+    'eftec\\bladeone\\BladeOneCacheRedis' => $vendorDir . '/eftec/bladeone/lib/BladeOneCacheRedis.php',
+    'eftec\\bladeone\\BladeOneCustom' => $vendorDir . '/eftec/bladeone/lib/BladeOneCustom.php',
 );

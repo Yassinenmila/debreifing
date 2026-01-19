@@ -1,7 +1,7 @@
 <?php return array(
     'root' => array(
-        'name' => 'mon/projet',
-        'pretty_version' => '1.0.0+no-version-set',
+        'name' => 'mon/debriefing',
+        'pretty_version' => '1.0.0',
         'version' => '1.0.0.0',
         'reference' => null,
         'type' => 'library',
@@ -19,8 +19,8 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
-        'mon/projet' => array(
-            'pretty_version' => '1.0.0+no-version-set',
+        'mon/debriefing' => array(
+            'pretty_version' => '1.0.0',
             'version' => '1.0.0.0',
             'reference' => null,
             'type' => 'library',

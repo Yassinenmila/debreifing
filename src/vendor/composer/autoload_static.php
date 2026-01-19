@@ -24,12 +24,20 @@ class ComposerStaticInit74f1915d410c028996c6c338514b0d90
         ),
         'App\\' =>
         array (
-            0 => __DIR__ . '/../..' . '/src',
+            0 => __DIR__ . '/../..' . '/App',
         ),
     );
 
     public static $classMap = array (
+        'App\\controller\\Home' => __DIR__ . '/../..' . '/App/controller/Home.php',
+        'App\\core\\Controller' => __DIR__ . '/../..' . '/App/core/Controller.php',
+        'App\\core\\Data' => __DIR__ . '/../..' . '/App/core/Data.php',
+        'App\\core\\Router' => __DIR__ . '/../..' . '/App/core/Router.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'eftec\\bladeone\\BladeOne' => __DIR__ . '/..' . '/eftec/bladeone/lib/BladeOne.php',
+        'eftec\\bladeone\\BladeOneCache' => __DIR__ . '/..' . '/eftec/bladeone/lib/BladeOneCache.php',
+        'eftec\\bladeone\\BladeOneCacheRedis' => __DIR__ . '/..' . '/eftec/bladeone/lib/BladeOneCacheRedis.php',
+        'eftec\\bladeone\\BladeOneCustom' => __DIR__ . '/..' . '/eftec/bladeone/lib/BladeOneCustom.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

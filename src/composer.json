@@ -1,13 +1,14 @@
 {
-    "name": "mon/projet",
-    "description": "Mon projet",
+    "name": "mon/debriefing",
+    "description": "Mon project debriefing",
+    "version":"1.0.0",
     "require": {
         "php": "^8.2",
         "eftec/bladeone": "^4.19"
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/" 
+            "App\\": "App/" 
         }
     }
 }
