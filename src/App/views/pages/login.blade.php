@@ -22,9 +22,11 @@
                 <h1 class="text-3xl font-bold text-white mb-2">Connexion</h1>
                 <p class="text-indigo-200">Accédez à votre espace personnel</p>
             </div>
+            
             <!-- Formulaire -->
-            <form action="#" method="POST" class="p-8 space-y-6">
+            <form action="/login" method="POST" class="p-8 space-y-6">
                 <!-- Champ Email -->
+                 <p class="text-red-500">{{ $error }}</p>
                 <div class="space-y-2">
                     <label class="block text-sm font-medium text-gray-700">
                         <i class="fas fa-envelope mr-2 text-indigo-500"></i>

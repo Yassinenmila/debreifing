@@ -83,10 +83,10 @@
                 <!-- Profil -->
                 <div class="relative">
                     <button id="profileBtn" class="flex items-center space-x-2">
-                        <div class="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center text-white font-bold">
-                            JD
+                        <div class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center text-white font-bold">
+                            👤
                         </div>
-                        <span class="hidden md:block font-medium">Jean Dupont</span>
+                        <span class="hidden md:block font-medium">{{ $_SESSION['user']['nom'] }} {{ $_SESSION['user']['prenom'] }}</span>
                         <i class="fas fa-chevron-down text-sm"></i>
                     </button>
 

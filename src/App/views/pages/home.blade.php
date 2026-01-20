@@ -3,7 +3,7 @@
 @section('title')
 Home
 @endsection
-<!-- ================= MAIN ================= -->
+
 @section('content')
 <main class="flex-grow container mx-auto px-4 py-10">
     <div class="bg-white rounded-xl shadow-md p-8 text-center">

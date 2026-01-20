@@ -9,7 +9,7 @@
 
 
 create table users {
-   id int serial primary key not null,
+   id serial primary key not null,
    nom varchar (100) not null,
    prenom varchar (100)not null,
    age int not null CHECK (age >= 16 AND age <=100 ),
@@ -19,7 +19,7 @@ create table users {
 }
 
 create table classe {
-    id int serial primary key not null,
+    id serial primary key not null,
     nom varchar (100) DEFAULT,
     decription text,
     promotions varchar (50),
@@ -45,7 +45,7 @@ create table competence {
     id int serial primary key not null,
     code varchar (50) unique not null,
     label varchar (255) not null, 
-    niveau varchar (50) not null check (niveau in ("imiter","sadapter","transposer"))
+    niveau niveau_comp not null
 }
 
 create table sprint {
