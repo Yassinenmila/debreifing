@@ -29,12 +29,63 @@ class Adminservice {
             $role
         );
     }
+    
+    public function add_sprint($nom,$date_debut,$date_fin){
 
-    public function getAll(){
+        if(empty($nom) || empty($date_debut) || empty($date_fin)){
+            return false;
+        }
+        if(strtotime($date_debut)>=strtotime($date_fin)){
+            return false;
+        }
+
+        return $this->admin->creat_sprint($nom,$date_debut,$date_fin);
+    }
+
+    public function getAll_users(){
         $users=$this->admin->get_users();
         if(!$users){
             return false;
         }
         return $users;
+    }
+
+    public function getAll_sprints(){
+        $sprints=$this->admin->get_sprint();
+        if(!$sprints){
+            return false;
+        }
+        return $sprints;
+    }
+    public function get_user($id){
+        $user=$this->admin->get_user($id);
+        if(!$user){
+            return false;
+        }
+        return $user;
+    }
+    public function delet_user($id){
+
+       return $this->admin->delet_user($id);
+    }
+
+    public function update_user($id,$nom,$prenom,$age,$email,$passwd,$conf,$role){
+        if (empty($nom) || empty($prenom) || empty($age) || empty($email) || empty($passwd) || empty($conf) || empty($role)){
+            return false ;
+        }
+
+        if($passwd !== $conf){
+            return false;
+        }
+
+        return $this->admin->update_user(
+            $id,
+            $nom,
+            $prenom,
+            $age,
+            $email,
+            $passwd,
+            $role
+        );
     }
 }

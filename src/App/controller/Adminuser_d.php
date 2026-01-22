@@ -1,20 +1,18 @@
-<?php
+<?php 
 namespace App\controller;
 use App\core\Controller;
 use App\services\Adminservice;
 
-class Adminusers extends Controller {
+class Adminuser_d extends Controller {
 
     private Adminservice $admin;
 
     public function index(){
-
+    
         $this->admin=new Adminservice();
-        
-        $data=$this->admin->getAll_users();
 
-        $this->view("pages.admin.users",[
-            'data'=>$data
-        ]);
+        $this->admin->delet_user($_POST['id']);
+        header("Location:/admin/users");
+        exit;
     }
 }

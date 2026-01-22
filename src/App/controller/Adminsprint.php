@@ -1,20 +1,20 @@
-<?php
+<?php 
 namespace App\controller;
 use App\core\Controller;
 use App\services\Adminservice;
 
-class Adminusers extends Controller {
+class Adminsprint extends Controller {
 
     private Adminservice $admin;
 
     public function index(){
 
         $this->admin=new Adminservice();
-        
-        $data=$this->admin->getAll_users();
 
-        $this->view("pages.admin.users",[
-            'data'=>$data
+        $sprints=$this->admin->getAll_sprints();
+
+        $this->view("pages.admin.sprints",[
+            'sprints'=>$sprints
         ]);
     }
 }

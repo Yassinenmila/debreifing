@@ -2,53 +2,79 @@
 
 @section('admincontent')
 
-<div class="bg-white p-6 rounded shadow mt-8 w-full">
-  <h3 class="text-lg font-bold mb-4">Liste des utilisateurs</h3>
+<!-- Main content -->
+  <main class="flex-1 p-8">
 
-  <div class="overflow-x-auto w-full">
-    <table class="min-w-full w-full divide-y divide-gray-200">
-      <thead class="bg-gray-100">
-        <tr>
-          <th class="px-6 py-3 text-left text-gray-600">ID</th>
-          <th class="px-6 py-3 text-left text-gray-600">Nom</th>
-          <th class="px-6 py-3 text-left text-gray-600">Prénom</th>
-          <th class="px-6 py-3 text-left text-gray-600">Email</th>
-          <th class="px-6 py-3 text-left text-gray-600">Rôle</th>
-          <th class="px-6 py-3 text-left text-gray-600">Actions</th>
-        </tr>
-      </thead>
-      <tbody class="divide-y divide-gray-200">
-        @foreach($data as $d)                                             <!-- isi en doit poser la loop  -->
-        <tr class="hover:bg-gray-50">
-          <td class="px-6 py-4">{{ $d['id'] }}</td>
-          <td class="px-6 py-4">{{ $d['prenom'] }}</td>
-          <td class="px-6 py-4">{{ $d['nom'] }}</td>
-          <td class="px-6 py-4">{{ $d['email'] }}</td>
-          <td class="px-6 py-4">
-            @if($d['roles']=== "student")
-                <span class="px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">Etudiant</span>
-            @elseif($d['roles']==="teacher")
-                <span class="px-3 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">Formateur</span>
-            @else
-                <span class="px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800">Administrateur</span>
-            @endif
-          </td>
-        <!-- ici en vas faire le formulaire -->
-          <td class="px-6 py-4 flex gap-2">
-            <button class="px-4 py-2 bg-yellow-400 text-white rounded hover:bg-yellow-500">
-              Modifier
-            </button>
-            <button class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
-              Supprimer
-            </button>
-          </td>
-        <!-- ici en vas finir le formulaire -->
-        </tr>
-        @endforeach
-      </tbody>
-    </table>
-  </div>
-</div>
+    <!-- Header -->
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-2xl font-bold text-gray-800">Gestion des utilisateurs</h2>
+      <a href="/admin/adduser" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+        + Ajouter
+      </a>
+    </div>
+
+    <!-- Table -->
+    <div class="bg-white rounded-xl shadow overflow-hidden">
+      <table class="min-w-full divide-y divide-gray-200">
+        <thead class="bg-gray-50">
+          <tr>
+            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">ID</th>
+            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Utilisateur</th>
+            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Rôle</th>
+            <th class="px-6 py-4 text-center text-sm font-semibold text-gray-600">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody class="divide-y divide-gray-100">
+          @foreach($data as $d)
+          <tr class="hover:bg-gray-50 transition">
+            <td class="px-6 py-4 text-gray-700">{{ $d['id'] }}</td>
+
+            <td class="px-6 py-4">
+              <div class="flex items-center gap-4">
+                <div class="w-10 h-10 bg-blue-500 text-white rounded-full flex items-center justify-center">
+                  <i class="fas fa-user"></i>
+                </div>
+                <div>
+                  <p class="font-semibold">{{ $d['prenom'] }} {{ $d['nom'] }}</p>
+                  <p class="text-sm text-gray-500">{{ $d['email'] }}</p>
+                </div>
+              </div>
+            </td>
+
+            <td class="px-6 py-4">
+              @if($d['roles'] === "student")
+                <span class="px-3 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-700">Étudiant</span>
+              @elseif($d['roles'] === "teacher")
+                <span class="px-3 py-1 text-xs font-medium rounded-full bg-yellow-100 text-yellow-700">Formateur</span>
+              @else
+                <span class="px-3 py-1 text-xs font-medium rounded-full bg-purple-100 text-purple-700">Admin</span>
+              @endif
+            </td>
+
+            <td class="px-6 py-4">
+              <div class="flex justify-center gap-2">
+                <form action="/admin/user" method="POST">
+                  <input type="hidden" name="id" value="{{ $d['id'] }}">
+                  <button type="submit" class="px-3 py-2 bg-yellow-400 text-white rounded-lg hover:bg-yellow-500">
+                    <i class="fas fa-edit"></i>
+                  </button>
+                </form>
+                <form action="/admin/user_d" method="POST">
+                  <input type="hidden" name="id" value="{{ $d['id'] }}">
+                  <button type="submit" class="px-3 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </form>
+              </div>
+            </td>
+          </tr>
+          @endforeach
+        </tbody>
+      </table>
+    </div>
+
+  </main>
 
 
 

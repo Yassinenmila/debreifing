@@ -98,7 +98,7 @@
                             <i class="fas fa-cog mr-2"></i> Paramètres
                         </a>
                         <div class="border-t my-2"></div>
-                        <a href="#" class="block px-4 py-2 text-red-600 hover:bg-red-50">
+                        <a href="/logout" class="block px-4 py-2 text-red-600 hover:bg-red-50">
                             <i class="fas fa-sign-out-alt mr-2"></i> Déconnexion
                         </a>
                     </div>
