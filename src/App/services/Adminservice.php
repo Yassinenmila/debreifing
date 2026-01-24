@@ -57,6 +57,31 @@ class Adminservice {
         }
         return $sprints;
     }
+
+    public function get_sprint($id){
+        $sprint=$this->admin->get_sprint_by_id($id);
+        if(!$sprint){
+            return false;
+        }
+        return $sprint;
+    }
+
+    public function update_sprint($id, $nom, $date_debut, $date_fin){
+        if(empty($id) || empty($nom) || empty($date_debut) || empty($date_fin)){
+            return false;
+        }
+        if(strtotime($date_debut) >= strtotime($date_fin)){
+            return false;
+        }
+        return $this->admin->update_sprint($id, $nom, $date_debut, $date_fin);
+    }
+
+    public function delet_sprint($id){
+        if(empty($id)){
+            return false;
+        }
+        return $this->admin->delet_sprint($id);
+    }
     public function get_user($id){
         $user=$this->admin->get_user($id);
         if(!$user){

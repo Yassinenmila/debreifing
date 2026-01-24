@@ -60,7 +60,7 @@ class Adminrepo {
 
     public function get_sprint(){
 
-        $stmt=$this->db->prepare("SELECT * from sprint");
+        $stmt=$this->db->prepare("SELECT * from sprint ORDER BY id DESC");
         $stmt->execute();
 
         $sprints=$stmt->fetchAll();
@@ -69,6 +69,47 @@ class Adminrepo {
             return false;
         }
         return $sprints;
+    }
+
+    public function get_sprint_by_id($id){
+        try{
+            $stmt=$this->db->prepare("SELECT * FROM sprint WHERE id = :id");
+            $stmt->execute([
+                ":id"=>$id
+            ]);
+            $sprint=$stmt->fetch();
+            if(!$sprint){
+                return false;
+            }
+            return $sprint;
+        }catch(PDOException $e){
+            return false;
+        }
+    }
+
+    public function update_sprint($id, $nom, $date_debut, $date_fin){
+        try{
+            $stmt=$this->db->prepare("UPDATE sprint SET nom=:nom, date_debut=:date_debut, date_fin=:date_fin WHERE id=:id");
+            return $stmt->execute([
+                ":nom"=>$nom,
+                ":date_debut"=>$date_debut,
+                ":date_fin"=>$date_fin,
+                ":id"=>$id
+            ]);
+        }catch(PDOException $e){
+            return false;
+        }
+    }
+
+    public function delet_sprint($id){
+        try{
+            $stmt=$this->db->prepare("DELETE FROM sprint WHERE id=:id");
+            return $stmt->execute([
+                ":id"=>$id
+            ]);
+        }catch(PDOException $e){
+            return false;
+        }
     }
     public function get_user($id){
         $stmt=$this->db->prepare("SELECT * FROM users WHERE id =:id");

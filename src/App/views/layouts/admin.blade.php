@@ -36,8 +36,12 @@
         <i class="fas fa-flag"></i> Sprints
       </a>
 
-      <a href="/admin/competences" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-50 text-gray-700">
+      <a href="/admin/competence" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-50 text-gray-700">
         <i class="fas fa-lightbulb"></i> Compétences
+      </a>
+
+      <a href="/admin/sprintcomp" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-50 text-gray-700">
+        <i class="fas fa-link"></i> Assignation Sprint/Compétence
       </a>
     </nav>
 
